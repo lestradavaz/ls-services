@@ -1,0 +1,33 @@
+---
+import { cn } from '../utils';
+import type { ClassValue } from 'clsx';
+
+type Props = {
+    globalClass?: ClassValue;
+    containerClass?: ClassValue;
+    element?:
+        | 'header'
+        | 'footer'
+        | 'section'
+        | 'div'
+        | 'nav'
+        | 'main'
+        | 'article'
+        | 'aside';
+};
+
+const { containerClass, globalClass, element } = Astro.props as Props;
+
+const ParentElement = element ?? 'div';
+---
+
+<ParentElement
+    class={cn(
+        'max-w-[calc(100vw-max(1rem,2.5vw))] w-full mx-auto',
+        globalClass
+    )}
+>
+    <div class={cn('max-w-[min(100%,1440px)] mx-auto w-full', containerClass)}>
+        <slot />
+    </div>
+</ParentElement>

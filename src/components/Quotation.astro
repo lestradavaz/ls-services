@@ -1,0 +1,23 @@
+---
+import { Container } from '../components';
+import { cn } from '../utils';
+
+type Props = {
+    text?: string;
+    class?: string;
+};
+
+const { text, class: className } = Astro.props;
+---
+
+<Fragment>
+    <button
+        class={cn(
+            'bg-gray-900 text-white p-3.5 rounded-lg cursor-pointer font-medium leading-none',
+            'hover:bg-gray-800 smooth-transition',
+            className
+        )}
+    >
+        {text ?? 'Cotizar proyecto'}
+    </button>
+</Fragment>

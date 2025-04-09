@@ -1,1 +1,14 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+
+*,
+html,
+*::before,
+*::after,
+body {
+    font-family: 'DM Sans', sans-serif;
+    @apply tracking-tighter;
+}
+
+.smooth-transition {
+    transition: all 0.5s cubic-bezier(0, 1, 0.65, 1);
+}
