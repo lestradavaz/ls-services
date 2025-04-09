@@ -22,11 +22,13 @@ import '../styles/global.css';
     <body>
         <slot />
 
-        <script is:inline>
-            document.addEventListener('DOMContentLoaded', () => {
-                import('/src/scripts/lenis.ts');
-            });
+        <script>
+            // Use a static import with Astro's client directive
+            import '../scripts/lenis.ts';
         </script>
-        <script src="/src/scripts/typingAnimation.ts" type="module"></script>
+        <script>
+            // Use a static import with Astro's client directive
+            import '../scripts/typingAnimation.ts';
+        </script>
     </body>
 </html>

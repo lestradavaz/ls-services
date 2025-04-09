@@ -22,12 +22,14 @@ const ParentElement = element ?? 'div';
 ---
 
 <ParentElement
-    class={cn(
-        'max-w-[calc(100vw-max(1rem,2.5vw))] w-full mx-auto',
-        globalClass
-    )}
+    class={cn('max-w-[calc(100vw-max(2rem,3vw))] w-full mx-auto', globalClass)}
 >
-    <div class={cn('max-w-[min(100%,1440px)] mx-auto w-full', containerClass)}>
+    <div
+        class={cn(
+            'max-w-[min(calc(100%-max(2rem,3vw)),1440px)] mx-auto w-full',
+            containerClass
+        )}
+    >
         <slot />
     </div>
 </ParentElement>

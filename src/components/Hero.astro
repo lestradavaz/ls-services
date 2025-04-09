@@ -4,23 +4,29 @@ import { Container, Quotation } from '../components';
 
 <Container
     element="section"
-    globalClass="bg-gray-100 rounded-b-[max(2.5vw,2rem))] overflow-hidden  mb-12"
-    containerClass="h-[125svh] flex flex-col items-center py-[10%]"
+    globalClass="bg-gray-100 rounded-b-[max(2.5vw,2rem))] overflow-hidden mb-12"
+    containerClass="min-h-[max(92.5svh,720px)] sm:min-h-[max(125svh,1120px)] flex flex-col items-center"
 >
     <span
-        class="border rounded-full leading-none py-3 px-5 border-gray-300/75 hover:border-gray-400/75 text-gray-800 text-sm font-medium mb-4 smooth-transition select-none"
+        class="block border rounded-full leading-none py-3 px-5 border-gray-300/75 hover:border-gray-400/75 text-gray-800 text-sm font-medium mb-4 smooth-transition select-none mt-[max(17.5svh,10rem)]"
     >
-        <span class="font-bold text-gray-950">+25</span> clientes satisfechos a nivel
-        nacional</span
+        <span class="font-bold text-gray-950">+25</span>
+        clientes satisfechos
+        <span class="hidden sm:inline">a nivel nacional</span>
+        🎉
+    </span>
+    <h1
+        class="text-[max(1.5rem,3vw)] leading-none font-bold text-center max-w-4xl text-balance"
     >
-    <h1 class="text-6xl font-bold text-center max-w-4xl text-balance">
         Creamos soluciones web <span class="text-gray-700">impactantes</span> para
         tu
         <span id="typed-text"></span>
         <span class="typing-cursor animate-blink text-gray-700">|</span>
     </h1>
 
-    <Quotation class="py-4 px-6 mt-8 mb-16" />
+    <Quotation
+        class="py-4 px-8 sm:px-6 mt-8 mb-12 sm:mb-16 sm:text-base text-sm"
+    />
 
     <img
         src="/wireframe.png"
