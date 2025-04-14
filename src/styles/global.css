@@ -7,6 +7,7 @@ html,
 body {
     font-family: 'DM Sans', sans-serif;
     @apply tracking-tighter;
+    scroll-behavior: smooth;
 }
 
 .smooth-transition {

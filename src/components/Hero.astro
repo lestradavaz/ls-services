@@ -4,7 +4,7 @@ import { Container, Quotation } from '../components';
 
 <Container
     element="section"
-    globalClass="bg-linear-to-b from-gray-100 via-gray-100 to-gray-100 rounded-b-[max(2.5vw,2rem))] overflow-hidden mb-12"
+    globalClass="bg-linear-to-b from-gray-100 via-gray-100 to-gray-100 rounded-b-[max(2.5vw,2rem))] overflow-hidden"
     containerClass="min-h-[max(92.5svh,720px)] sm:min-h-[max(125svh,1120px)] flex flex-col items-center"
 >
     <span
@@ -16,10 +16,11 @@ import { Container, Quotation } from '../components';
         🎉
     </span>
     <h1
-        class="text-[max(1.5rem,3vw)] leading-none font-bold text-center max-w-4xl text-balance"
+        class="text-[max(2.25rem,3vw)] leading-none font-bold text-center max-w-[25rem] sm:max-w-2xl text-balance"
     >
         Creamos soluciones web <span class="text-gray-700">impactantes</span> para
-        tu
+        <br class="sm:hidden" />
+        <span>tu</span>
         <span id="typed-text"></span>
         <span class="typing-cursor animate-blink text-gray-700">|</span>
     </h1>

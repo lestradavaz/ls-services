@@ -5,7 +5,7 @@ import { Container, Quotation } from '../components';
 <Container
     element="header"
     globalClass="py-4 fixed top-0 left-1/2 -translate-x-1/2 z-[99]"
-    containerClass="py-4 px-4 sm:px-6 bg-gray-50 border border-gray-200 rounded-xl flex justify-between items-center"
+    containerClass="py-4 px-6 sm:px-6 bg-gray-50/75 backdrop-blur border border-gray-200 rounded-xl flex justify-between items-center"
 >
     <a href="/" class="flex gap-1 items-center select-none">
         <img src="/logo.png" alt="LS Services" class="size-10 object-contain" />
@@ -31,11 +31,11 @@ import { Container, Quotation } from '../components';
     </a>
     <nav
         id="menu"
-        class="sm:gap-6 items-center flex sm:flex-row flex-col fixed sm:relative bg-gray-50 w-full sm:w-[unset] top-4 sm:top-0 py-6 sm:py-0 left-1/2 -translate-x-1/2 sm:left-0 sm:translate-x-0 border border-gray-200 sm:border-transparent rounded-xl target:opacity-100 opacity-0 sm:opacity-100 pointer-events-none target:pointer-events-auto sm:pointer-events-auto origin-[top_right] scale-0 target:scale-100 sm:scale-100 [transition:scale_0.5s_cubic-bezier(0,1,0.65,1),opacity_0.1s_ease]"
+        class="sm:gap-6 items-center flex sm:flex-row flex-col fixed sm:relative bg-gray-50 sm:bg-transparent w-full sm:w-[unset] top-0 sm:top-0 py-6 sm:py-0 left-1/2 -translate-x-1/2 sm:left-0 sm:translate-x-0 border border-gray-200 sm:border-transparent rounded-xl target:opacity-100 opacity-0 sm:opacity-100 pointer-events-none target:pointer-events-auto sm:pointer-events-auto origin-[top_right] scale-0 target:scale-100 sm:scale-100 [transition:scale_0.5s_cubic-bezier(0,1,0.65,1),opacity_0.1s_ease]"
     >
         <a
             href="#"
-            class="smooth-transition w-full flex items-center justify-end px-8 sm:hidden"
+            class="smooth-transition w-full flex items-center justify-end px-6 sm:hidden"
         >
             <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -52,7 +52,7 @@ import { Container, Quotation } from '../components';
             </svg>
         </a>
         <a
-            href="#"
+            href="#productos"
             class="smooth-transition text-gray-500 hover:text-gray-900 px-6 sm:px-0 py-4 sm:py-0"
             >Productos</a
         >

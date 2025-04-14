@@ -14,15 +14,17 @@ type Props = {
         | 'main'
         | 'article'
         | 'aside';
+    id?: string;
 };
 
-const { containerClass, globalClass, element } = Astro.props as Props;
+const { containerClass, globalClass, element, id } = Astro.props as Props;
 
 const ParentElement = element ?? 'div';
 ---
 
 <ParentElement
     class={cn('max-w-[calc(100vw-max(2rem,3vw))] w-full mx-auto', globalClass)}
+    id={id}
 >
     <div
         class={cn(
