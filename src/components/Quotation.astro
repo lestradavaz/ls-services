@@ -1,23 +1,334 @@
 ---
-import { Container } from '../components';
+import { Button, ModalWrapper } from '../components';
 import { cn } from '../utils';
 
 type Props = {
     text?: string;
     class?: string;
+    modalId?: string;
 };
 
-const { text, class: className } = Astro.props;
+const { text, class: className, modalId = 'cotizacion-modal' } = Astro.props;
 ---
 
-<Fragment>
-    <button
-        class={cn(
-            'bg-gray-900 text-white p-3.5 rounded-lg cursor-pointer font-medium leading-none',
-            'hover:bg-gray-800 smooth-transition',
-            className
-        )}
+<ModalWrapper id={modalId} size="xl">
+    <Button
+        slot="trigger"
+        class={cn('bg-gray-800 text-white hover:bg-gray-700', className)}
     >
         {text ?? 'Cotizar proyecto'}
-    </button>
-</Fragment>
+    </Button>
+
+    <div slot="content" class="text-left max-w-2xl w-full">
+        <div class="form-container">
+            <h2 class="text-3xl font-bold mb-1">Comencemos tu proyecto</h2>
+
+            <div id="step-1" class="step active">
+                <p class="mb-6">
+                    Selecciona el tipo de proyecto que deseas desarrollar:
+                </p>
+
+                <div class="grid gap-4 mb-6">
+                    <div
+                        class="service-option border border-gray-200 rounded-lg p-4 hover:border-blue-500 cursor-pointer transition-all"
+                    >
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-xl">🖌️</span>
+                                    <h3 class="text-lg font-semibold">
+                                        Sitio Web
+                                    </h3>
+                                </div>
+                                <p class="text-sm text-gray-600 mt-1">
+                                    Páginas corporativas, portafolios, sitios
+                                    informativos y blogs.
+                                </p>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-sm">Desde</span>
+                                <p class="font-semibold">$15,500 MXN</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        class="service-option border border-gray-200 rounded-lg p-4 hover:border-blue-500 cursor-pointer transition-all"
+                    >
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-xl">🛒</span>
+                                    <h3 class="text-lg font-semibold">
+                                        Tienda en línea
+                                    </h3>
+                                </div>
+                                <p class="text-sm text-gray-600 mt-1">
+                                    Plataformas de venta, catálogos digitales y
+                                    sistemas de pedidos.
+                                </p>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-sm">Desde</span>
+                                <p class="font-semibold">$24,000 MXN</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="flex flex-col sm:flex-row gap-4 sm:gap-0 sm:justify-between"
+                >
+                    <div class="text-sm text-gray-600">
+                        <div class="flex items-center gap-2">
+                            <span>¿Necesitas ayuda?</span>
+                            <a
+                                href="#"
+                                class="text-gray-900 font-medium flex items-center"
+                            >
+                                Agenda una sesión
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    class="h-4 w-4 ml-1"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                                    ></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <Button
+                        id="next-step"
+                        class="bg-gray-800 hover:bg-gray-900 text-white w-full sm:w-auto"
+                    >
+                        Continuar
+                    </Button>
+                </div>
+            </div>
+
+            <div id="step-2" class="step hidden">
+                <p class="mb-6">Dinos más sobre tu proyecto:</p>
+
+                <form class="space-y-4">
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <label
+                                for="nombre"
+                                class="block text-sm font-medium text-gray-700"
+                                >Nombre</label
+                            >
+                            <input
+                                type="text"
+                                id="nombre"
+                                name="nombre"
+                                class="w-full mt-1 p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                                placeholder="Tu nombre"
+                            />
+                        </div>
+
+                        <div>
+                            <label
+                                for="email"
+                                class="block text-sm font-medium text-gray-700"
+                                >Email</label
+                            >
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                class="w-full mt-1 p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                                placeholder="tu@email.com"
+                            />
+                        </div>
+                    </div>
+
+                    <div>
+                        <label
+                            for="telefono"
+                            class="block text-sm font-medium text-gray-700"
+                            >Teléfono (opcional)</label
+                        >
+                        <input
+                            type="tel"
+                            id="telefono"
+                            name="telefono"
+                            class="w-full mt-1 p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                            placeholder="Tu número de teléfono"
+                        />
+                    </div>
+
+                    <div>
+                        <label
+                            for="descripcion"
+                            class="block text-sm font-medium text-gray-700"
+                            >Descripción del proyecto</label
+                        >
+                        <textarea
+                            id="descripcion"
+                            name="descripcion"
+                            rows="6"
+                            class="w-full mt-1 p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 resize-none"
+                            placeholder="Describe brevemente tu proyecto y cualquier característica específica que necesites"
+                        ></textarea>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700"
+                            >Presupuesto estimado</label
+                        >
+                        <div class="grid grid-cols-3 gap-4 mt-1">
+                            <div
+                                class="budget-option border border-gray-200 rounded-md p-2 text-center cursor-pointer hover:border-blue-500"
+                            >
+                                <span class="block">Básico</span>
+                                <span class="text-sm text-gray-600"
+                                    >Hasta $20,000</span
+                                >
+                            </div>
+                            <div
+                                class="budget-option border border-gray-200 rounded-md p-2 text-center cursor-pointer hover:border-blue-500"
+                            >
+                                <span class="block">Estándar</span>
+                                <span class="text-sm text-gray-600"
+                                    >$20,000 - $50,000</span
+                                >
+                            </div>
+                            <div
+                                class="budget-option border border-gray-200 rounded-md p-2 text-center cursor-pointer hover:border-blue-500"
+                            >
+                                <span class="block">Premium</span>
+                                <span class="text-sm text-gray-600"
+                                    >$50,000+</span
+                                >
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-between mt-6">
+                        <Button
+                            type="button"
+                            id="prev-step"
+                            class="bg-gray-200 text-gray-800 hover:bg-gray-300"
+                        >
+                            Regresar
+                        </Button>
+                        <Button
+                            type="submit"
+                            class="bg-gray-800 hover:bg-gray-900 text-white"
+                        >
+                            Enviar cotización
+                        </Button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</ModalWrapper>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const step1 = document.getElementById('step-1');
+        const step2 = document.getElementById('step-2');
+        const nextBtn = document.getElementById('next-step');
+        const prevBtn = document.getElementById('prev-step');
+        const serviceOptions = document.querySelectorAll('.service-option');
+        const budgetOptions = document.querySelectorAll('.budget-option');
+
+        // Handle service selection
+        let selectedService: string | null = null;
+        serviceOptions.forEach((option) => {
+            option.addEventListener('click', () => {
+                // Remove active class from all options
+                serviceOptions.forEach((o) => {
+                    o.classList.remove('border-blue-500', 'bg-blue-50');
+                    o.classList.add('border-gray-200');
+                });
+
+                // Add active class to clicked option
+                option.classList.remove('border-gray-200');
+                option.classList.add('border-blue-500', 'bg-blue-50');
+                const serviceTitle = option.querySelector('h3');
+                if (serviceTitle) {
+                    selectedService = serviceTitle.textContent;
+                }
+            });
+        });
+
+        // Handle budget selection
+        budgetOptions.forEach((option) => {
+            option.addEventListener('click', () => {
+                // Remove active class from all options
+                budgetOptions.forEach((o) => {
+                    o.classList.remove('border-blue-500', 'bg-blue-50');
+                    o.classList.add('border-gray-200');
+                });
+
+                // Add active class to clicked option
+                option.classList.remove('border-gray-200');
+                option.classList.add('border-blue-500', 'bg-blue-50');
+            });
+        });
+
+        // Next step button
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => {
+                if (selectedService && step1 && step2) {
+                    step1.classList.remove('active');
+                    step1.classList.add('hidden');
+                    step2.classList.remove('hidden');
+                    step2.classList.add('active');
+                } else {
+                    // Show error or notification that service must be selected
+                    alert('Por favor selecciona un servicio para continuar.');
+                }
+            });
+        }
+
+        // Previous step button
+        if (prevBtn && step1 && step2) {
+            prevBtn.addEventListener('click', (e) => {
+                e.preventDefault(); // Prevent form submission
+                step2.classList.remove('active');
+                step2.classList.add('hidden');
+                step1.classList.remove('hidden');
+                step1.classList.add('active');
+            });
+        }
+    });
+</script>
+
+<style>
+    .step {
+        transition: all 0.3s ease;
+    }
+
+    .step.active {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    .step.hidden {
+        display: none;
+        opacity: 0;
+    }
+
+    .service-option,
+    .budget-option {
+        transition: all 0.2s ease;
+    }
+
+    .service-option:hover,
+    .budget-option:hover {
+        transform: translateY(-2px);
+        box-shadow:
+            0 4px 6px -1px rgba(0, 0, 0, 0.1),
+            0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+</style>

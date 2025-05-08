@@ -1,14 +1,521 @@
 ---
-import { Container } from '../components';
+import { Container, Quotation } from '../components';
 ---
 
 <Container
     element="section"
-    globalClass="bg-linear-to-b from-gray-100 via-gray-100 to-gray-100 rounded-[max(2.5vw,2rem))] scroll-mt-32"
-    containerClass="min-h-[max(92.5svh,720px)] sm:min-h-[max(125svh,1120px)] flex flex-col items-center p-12"
+    globalClass="bg-linear-to-b from-gray-100 via-gray-100 to-gray-100 rounded-[max(2.5vw,2rem)] scroll-mt-32"
+    containerClass="min-h-[max(92.5svh,720px)] sm:min-h-[max(125svh,1120px)] flex flex-col items-center px-4 sm:px-8 lg:px-12 py-24"
     id="productos"
 >
-    <h2 class="text-4xl font-bold text-center text-gray-900 text-balance mb-2">
+    <h2
+        class="text-3xl sm:text-4xl font-bold text-center text-gray-900 text-balance mb-2"
+    >
         Nuestros productos
     </h2>
+
+    <p class="text-center text-gray-700 max-w-2xl mb-12">
+        Implementamos las mejores prácticas en diseño y desarrollo web para
+        elaborar sitios de alta calidad.
+    </p>
+
+    <!-- Características Principales - Elemento Dinámico Original -->
+    <div class="w-full overflow-hidden">
+        <!-- Selector de Categoría -->
+        <div class="relative mb-8">
+            <div class="flex justify-center">
+                <div class="bg-gray-200 p-1 rounded-full inline-flex">
+                    <button
+                        id="btn-diseno"
+                        class="relative px-6 py-2 rounded-full text-sm font-medium z-10 bg-white transition-all duration-300 ease-in-out cursor-pointer"
+                        >Diseño Web</button
+                    >
+                    <button
+                        id="btn-ecommerce"
+                        class="relative px-6 py-2 rounded-full text-sm font-medium z-10 transition-all duration-300 ease-in-out cursor-pointer"
+                        >E-commerce</button
+                    >
+                </div>
+            </div>
+        </div>
+
+        <div class="relative md:min-h-[57.5rem] min-h-[87.5rem] w-full">
+            <!-- Panel Diseño Web - Bento Grid -->
+            <div id="panel-diseno" class="absolute w-full opacity-100">
+                <div
+                    class="grid grid-cols-12 auto-rows-[minmax(120px, auto)] gap-4"
+                >
+                    <!-- Característica 1 - Grande con imagen -->
+                    <div
+                        class="bento-card col-span-12 md:col-span-8 row-span-1 md:row-span-2"
+                    >
+                        <div class="bento-content flex">
+                            <div class="flex-1 p-4 sm:p-6">
+                                <span class="feature-number">01</span>
+                                <h4 class="text-xl font-semibold mb-2">
+                                    Diseño Responsive
+                                </h4>
+                                <p class="text-gray-600">
+                                    Adaptable a todos los dispositivos y tamaños
+                                    de pantalla, garantizando una experiencia
+                                    óptima.
+                                </p>
+                            </div>
+                            <div class="hidden md:block w-1/3 h-full">
+                                <img
+                                    src="/img/responsive-design.webp"
+                                    alt="Diseño Responsive"
+                                    class="w-full h-full object-cover rounded-tr-lg rounded-br-lg"
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Característica 2 - Sin imagen -->
+                    <div
+                        class="bento-card col-span-12 md:col-span-4 row-span-1 md:row-span-2"
+                    >
+                        <div class="bento-content">
+                            <div
+                                class="p-4 sm:p-5 h-full flex flex-col justify-center"
+                            >
+                                <span class="feature-number">02</span>
+                                <h4 class="text-lg font-semibold mb-1">
+                                    UX Optimizada
+                                </h4>
+                                <p class="text-gray-600">
+                                    Experiencia de usuario fluida e intuitiva
+                                    para facilitar la navegación y aumentar la
+                                    satisfacción del cliente.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Característica 3 - Con imagen -->
+                    <div
+                        class="bento-card col-span-12 md:col-span-4 row-span-1 md:row-span-2"
+                    >
+                        <div class="bento-content flex flex-col">
+                            <div class="h-40 overflow-hidden">
+                                <img
+                                    src="/img/seo.webp"
+                                    alt="SEO Integrado"
+                                    class="w-full h-full object-cover"
+                                />
+                            </div>
+                            <div class="p-4 sm:p-5 flex-1">
+                                <span class="feature-number">03</span>
+                                <h4 class="text-lg font-semibold mb-1">
+                                    SEO Integrado
+                                </h4>
+                                <p class="text-gray-600">
+                                    Optimización para motores de búsqueda desde
+                                    la base
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Característica 4 - Con imagen -->
+                    <div
+                        class="bento-card col-span-12 md:col-span-8 row-span-1 md:row-span-2"
+                    >
+                        <div
+                            class="bento-content flex md:flex-row flex-col-reverse"
+                        >
+                            <div class="hidden md:block w-1/3 h-full">
+                                <img
+                                    src="/img/fast-loading.webp"
+                                    alt="Rápida Carga"
+                                    class="w-full h-full object-cover rounded-tl-lg rounded-bl-lg"
+                                />
+                            </div>
+                            <div class="flex-1 p-4 sm:p-6">
+                                <span class="feature-number">04</span>
+                                <h4 class="text-xl font-semibold mb-2">
+                                    Rápida Carga
+                                </h4>
+                                <p class="text-gray-600">
+                                    Optimización de recursos para máxima
+                                    velocidad, mejorando la experiencia del
+                                    usuario.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Característica 5 - Sin imagen -->
+                    <div
+                        class="bento-card col-span-12 md:col-span-6 row-span-1 md:row-span-2"
+                    >
+                        <div class="bento-content">
+                            <div
+                                class="p-4 sm:p-5 h-full flex flex-col justify-center"
+                            >
+                                <span class="feature-number">05</span>
+                                <h4 class="text-lg font-semibold mb-1">
+                                    Personalización Completa
+                                </h4>
+                                <p class="text-gray-600">
+                                    Diseños únicos adaptados a tu marca con
+                                    colores, estilos y funcionalidades a medida
+                                    para destacar tu identidad.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Característica 6 - Sin imagen -->
+                    <div
+                        class="bento-card col-span-12 md:col-span-6 row-span-1 md:row-span-2"
+                    >
+                        <div class="bento-content">
+                            <div
+                                class="p-4 sm:p-5 h-full flex flex-col justify-center"
+                            >
+                                <span class="feature-number">06</span>
+                                <h4 class="text-lg font-semibold mb-1">
+                                    Mantenimiento Continuo
+                                </h4>
+                                <p class="text-gray-600">
+                                    Actualizaciones y soporte técnico permanente
+                                    para mantener tu sitio siempre actualizado y
+                                    funcionando a la perfección.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Panel E-commerce - Bento Grid -->
+            <div
+                id="panel-ecommerce"
+                class="absolute w-full opacity-0 translate-x-full"
+            >
+                <div
+                    class="grid grid-cols-12 auto-rows-[minmax(120px, auto)] gap-4"
+                >
+                    <!-- Característica 1 - Grande con imagen -->
+                    <div
+                        class="bento-card col-span-12 md:col-span-6 row-span-1 md:row-span-4"
+                    >
+                        <div class="bento-content flex">
+                            <div class="flex-1 p-4 sm:p-6">
+                                <span class="feature-number">01</span>
+                                <h4 class="text-xl font-semibold mb-2">
+                                    Carrito Inteligente
+                                </h4>
+                                <p class="text-gray-600">
+                                    Funcionalidad avanzada de compra y checkout
+                                    con opciones de guardar productos.
+                                </p>
+                            </div>
+                            <div class="hidden md:block w-1/3 h-full">
+                                <img
+                                    src="/img/smart-cart.webp"
+                                    alt="Carrito Inteligente"
+                                    class="w-full h-full object-cover rounded-tr-lg rounded-br-lg"
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Característica 2 - Sin imagen -->
+                    <div
+                        class="bento-card col-span-12 md:col-span-6 row-span-1 md:row-span-2"
+                    >
+                        <div class="bento-content">
+                            <div
+                                class="p-4 sm:p-5 h-full flex flex-col justify-center"
+                            >
+                                <span class="feature-number">02</span>
+                                <h4 class="text-lg font-semibold mb-1">
+                                    Pasarelas de Pago
+                                </h4>
+                                <p class="text-gray-600">
+                                    Integración con múltiples métodos de pago
+                                    seguros para maximizar tus ventas y dar
+                                    confianza al cliente.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Característica 3 - Con imagen -->
+                    <div
+                        class="bento-card col-span-12 md:col-span-6 row-span-1 md:row-span-2"
+                    >
+                        <div class="bento-content flex flex-col">
+                            <div class="h-40 overflow-hidden">
+                                <img
+                                    src="/img/inventory.webp"
+                                    alt="Gestión de Inventario"
+                                    class="w-full h-full object-cover"
+                                />
+                            </div>
+                            <div class="p-4 sm:p-5 flex-1">
+                                <span class="feature-number">03</span>
+                                <h4 class="text-lg font-semibold mb-1">
+                                    Gestión de Inventario
+                                </h4>
+                                <p class="text-gray-600">
+                                    Control en tiempo real de productos y
+                                    existencias
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Característica 4 - Sin imagen -->
+                    <div
+                        class="bento-card col-span-12 md:col-span-12 row-span-1 md:row-span-2"
+                    >
+                        <div class="bento-content">
+                            <div
+                                class="p-4 sm:p-6 h-full flex flex-col justify-center"
+                            >
+                                <span class="feature-number">04</span>
+                                <h4 class="text-xl font-semibold mb-2">
+                                    Marketing Integrado
+                                </h4>
+                                <p class="text-gray-600">
+                                    Herramientas de promoción y campañas para
+                                    potenciar tus ventas y alcanzar a más
+                                    clientes, con informes detallados de
+                                    rendimiento.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Característica 5 - Con imagen -->
+                    <div
+                        class="bento-card col-span-12 md:col-span-6 row-span-1 md:row-span-2"
+                    >
+                        <div class="bento-content flex">
+                            <div class="flex-1 p-4 sm:p-5">
+                                <span class="feature-number">05</span>
+                                <h4 class="text-lg font-semibold mb-1">
+                                    Analítica Avanzada
+                                </h4>
+                                <p class="text-gray-600">
+                                    Métricas y estadísticas detalladas de ventas
+                                </p>
+                            </div>
+                            <div class="hidden md:block w-1/3 h-full">
+                                <img
+                                    src="/img/analytics.webp"
+                                    alt="Analítica Avanzada"
+                                    class="w-full h-full object-cover rounded-tr-lg rounded-br-lg"
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Característica 6 - Sin imagen -->
+                    <div
+                        class="bento-card col-span-12 md:col-span-6 row-span-1 md:row-span-2"
+                    >
+                        <div class="bento-content">
+                            <div
+                                class="p-4 sm:p-5 h-full flex flex-col justify-center"
+                            >
+                                <span class="feature-number">06</span>
+                                <h4 class="text-lg font-semibold mb-1">
+                                    Experiencia Multicanal
+                                </h4>
+                                <p class="text-gray-600">
+                                    Sincronización entre tienda física y online
+                                    para ofrecer a tus clientes una experiencia
+                                    de compra unificada.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <Quotation text="Obtén tu propuesta personalizada ✨" />
 </Container>
+
+<style>
+    /* Estilo de Tarjetas de Características - Bento Grid */
+    .bento-card {
+        position: relative;
+        background-color: white;
+        border-radius: 16px;
+        overflow: hidden;
+        /* transition: all 0.3s ease; */
+        /* box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); */
+    }
+
+    .bento-card:hover {
+        transform: translateY(-5px);
+        /* box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); */
+    }
+
+    .bento-content {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .feature-number {
+        display: block;
+        font-size: 24px;
+        font-weight: 800;
+        margin-bottom: 8px;
+        color: #000;
+        opacity: 0.2;
+    }
+</style>
+
+<script>
+    // Importación de GSAP
+    import { gsap } from 'gsap';
+
+    // Funcionalidad de alternancia entre paneles
+    document.addEventListener('DOMContentLoaded', () => {
+        const btnDiseno = document.getElementById('btn-diseno');
+        const btnEcommerce = document.getElementById('btn-ecommerce');
+        const panelDiseno = document.getElementById('panel-diseno');
+        const panelEcommerce = document.getElementById('panel-ecommerce');
+
+        if (!btnDiseno || !btnEcommerce || !panelDiseno || !panelEcommerce) {
+            console.error(
+                'No se pudieron encontrar todos los elementos necesarios para la interacción'
+            );
+            return;
+        }
+
+        // Configuración inicial - Asegurar que el panel inicial esté visible
+        panelDiseno.style.opacity = '1';
+        panelDiseno.style.transform = 'translateX(0)';
+        panelEcommerce.style.opacity = '0';
+        panelEcommerce.style.transform = 'translateX(100%)';
+
+        // Seleccionar las tarjetas del panel visible inicialmente
+        const initialVisibleCards = panelDiseno.querySelectorAll('.bento-card');
+
+        // Animación inicial de las tarjetas del panel visible
+        gsap.fromTo(
+            initialVisibleCards,
+            { opacity: 0, y: 30 },
+            {
+                duration: 0.5,
+                opacity: 1,
+                y: 0,
+                stagger: 0.1,
+                ease: 'power3.out',
+                onComplete: () => {
+                    // Inicializar GSAP para los paneles después de la animación inicial
+                    gsap.set(panelEcommerce, { opacity: 0, x: '100%' });
+                    gsap.set(panelDiseno, { opacity: 1, x: '0%' });
+                }
+            }
+        );
+
+        // Función para animar todas las tarjetas
+        const setupCardHoverEffects = () => {
+            document.querySelectorAll('.bento-card').forEach((card) => {
+                card.addEventListener('mouseenter', () => {
+                    gsap.to(card, {
+                        y: -10,
+                        boxShadow: '0 15px 30px rgba(0, 0, 0, 0.1)',
+                        duration: 0.5,
+                        ease: 'power2.out'
+                    });
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    gsap.to(card, {
+                        y: 0,
+                        boxShadow: '0 15px 30px rgba(0, 0, 0, 0)',
+                        duration: 0.5,
+                        ease: 'power2.out'
+                    });
+                });
+            });
+        };
+
+        // Configurar efectos de hover
+        setupCardHoverEffects();
+
+        btnDiseno.addEventListener('click', () => {
+            // Actualizar estados de botones
+            btnDiseno.classList.add('bg-white');
+            btnEcommerce.classList.remove('bg-white');
+
+            // Animación de transición entre paneles
+            gsap.to(panelEcommerce, {
+                opacity: 0,
+                x: '100%',
+                duration: 0.5,
+                ease: 'power2.inOut'
+            });
+
+            gsap.to(panelDiseno, {
+                opacity: 1,
+                x: '0%',
+                duration: 0.5,
+                ease: 'power2.inOut'
+            });
+
+            // Animación de las tarjetas del nuevo panel
+            const disenoCards = panelDiseno.querySelectorAll('.bento-card');
+            gsap.fromTo(
+                disenoCards,
+                { opacity: 0, y: 20 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.5,
+                    stagger: 0.1,
+                    delay: 0.3,
+                    ease: 'power3.out'
+                }
+            );
+        });
+
+        btnEcommerce.addEventListener('click', () => {
+            // Actualizar estados de botones
+            btnEcommerce.classList.add('bg-white');
+            btnDiseno.classList.remove('bg-white');
+
+            // Animación de transición entre paneles
+            gsap.to(panelDiseno, {
+                opacity: 0,
+                x: '-100%',
+                duration: 0.5,
+                ease: 'power2.inOut'
+            });
+
+            gsap.to(panelEcommerce, {
+                opacity: 1,
+                x: '0%',
+                duration: 0.5,
+                ease: 'power2.inOut'
+            });
+
+            // Animación de las tarjetas del nuevo panel
+            const ecommerceCards =
+                panelEcommerce.querySelectorAll('.bento-card');
+            gsap.fromTo(
+                ecommerceCards,
+                { opacity: 0, y: 20 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.5,
+                    stagger: 0.1,
+                    delay: 0.3,
+                    ease: 'power3.out'
+                }
+            );
+        });
+    });
+</script>

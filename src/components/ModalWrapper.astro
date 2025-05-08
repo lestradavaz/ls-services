@@ -1,0 +1,324 @@
+---
+import { cn } from '../utils';
+
+interface Props {
+    id: string;
+    class?: string;
+    size?: 'sm' | 'md' | 'lg' | 'xl' | 'full';
+    position?: 'center' | 'bottom';
+    closeOnClickOutside?: boolean;
+}
+
+const {
+    id,
+    class: className,
+    size = 'lg',
+    position = 'center',
+    closeOnClickOutside = true
+} = Astro.props;
+
+// Mapeo de tamaños a clases específicas
+const sizeClasses = {
+    sm: 'w-full max-w-[min(calc(100vw-2rem),24rem)]',
+    md: 'w-full max-w-[min(calc(100vw-2rem),28rem)]',
+    lg: 'w-full max-w-[min(calc(100vw-2rem),32rem)]',
+    xl: 'w-full max-w-[min(calc(100vw-2rem),36rem)]',
+    full: 'w-full max-w-[90vw] mx-4'
+};
+
+// Mapeo de posiciones
+const positionClasses = {
+    center: '',
+    bottom: 'fixed bottom-0 inset-x-0 rounded-b-none rounded-t-lg'
+};
+---
+
+<!-- Botón trigger -->
+<span class={cn('inline-block', className)}>
+    <span data-modal-trigger={id}>
+        <slot name="trigger" />
+    </span>
+</span>
+
+<!-- Modal usando elemento dialog nativo -->
+<dialog
+    id={id}
+    class={cn(
+        'p-0 bg-white rounded-lg shadow-xl w-full mx-auto backdrop:bg-black backdrop:bg-opacity-50',
+        sizeClasses[size],
+        positionClasses[position]
+    )}
+    aria-labelledby={`${id}-title`}
+    aria-modal="true"
+>
+    <div class="w-full">
+        <!-- Header -->
+        <div class="px-4 pt-4 flex items-center justify-end">
+            <!-- <h3 id={`${id}-title`} class="font-medium text-lg text-gray-900">
+                <slot name="title">Modal</slot>
+            </h3> -->
+            <button
+                type="button"
+                class="text-gray-400 hover:text-gray-500 modal-close cursor-pointer"
+                aria-label="Cerrar modal"
+            >
+                <svg
+                    class="h-6 w-6"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Content -->
+        <div class="px-4 py-5 max-h-[80vh] overflow-y-auto">
+            <slot name="content" />
+        </div>
+
+        <!-- Footer (optional) -->
+        <slot name="footer" />
+    </div>
+</dialog>
+
+<script define:vars={{ id, closeOnClickOutside, position }}>
+    // JavaScript para manejar el modal usando la API <dialog>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Buscar todos los triggers para este modal específico
+        const triggers = document.querySelectorAll(
+            `[data-modal-trigger="${id}"]`
+        );
+        const dialog = document.getElementById(id);
+
+        if (!dialog || !(dialog instanceof HTMLDialogElement)) return;
+
+        const closeButtons = dialog.querySelectorAll('.modal-close');
+        let scrollPosition = 0;
+
+        // Función para abrir el modal
+        function openModal() {
+            // Guardar la posición actual del scroll
+            scrollPosition = window.scrollY;
+
+            dialog.showModal();
+            document.body.classList.add('modal-open');
+
+            // Fijar el body en la posición actual
+            document.body.style.top = `-${scrollPosition}px`;
+
+            // Si es modal de tipo bottom en móvil, aplicar clase especial
+            if (position === 'bottom' && window.innerWidth < 768) {
+                dialog.classList.add('sheet-open');
+            }
+
+            // Asegurar que los eventos de clic funcionen correctamente
+            setTimeout(() => {
+                // Encontrar todos los elementos interactivos dentro del modal
+                const interactiveElements = dialog.querySelectorAll(
+                    'button, a, input, select, [role="button"]'
+                );
+
+                // Asegurar que todos tengan los eventos táctiles habilitados
+                interactiveElements.forEach((el) => {
+                    el.style.touchAction = 'manipulation';
+                    el.style.pointerEvents = 'auto';
+                    el.style.cursor = 'pointer';
+                });
+            }, 100);
+        }
+
+        // Función para cerrar el modal
+        function closeModal() {
+            // Agregar clase para animar el cierre
+            dialog.classList.add('closing');
+
+            // Esperar a que termine la animación antes de cerrar
+            setTimeout(() => {
+                dialog.close();
+                dialog.classList.remove('closing');
+                document.body.classList.remove('modal-open');
+
+                // Restaurar la posición del scroll
+                document.body.style.top = '';
+                window.scrollTo(0, scrollPosition);
+
+                if (position === 'bottom') {
+                    dialog.classList.remove('sheet-open');
+                }
+            }, 250);
+        }
+
+        // Abrir modal con cada trigger
+        triggers.forEach(function (trigger) {
+            trigger.addEventListener('click', openModal);
+        });
+
+        // Cerrar modal con el botón X
+        closeButtons.forEach(function (button) {
+            button.addEventListener('click', closeModal);
+        });
+
+        // Mejorar manejo de eventos táctiles
+        dialog.addEventListener('pointerdown', function (event) {
+            // Permitir que los eventos de puntero se propaguen normalmente dentro del contenido
+            event.stopPropagation();
+        });
+
+        // Cerrar con click fuera del modal
+        if (closeOnClickOutside) {
+            dialog.addEventListener('click', function (event) {
+                const rect = dialog.getBoundingClientRect();
+                const isInDialog =
+                    rect.top <= event.clientY &&
+                    event.clientY <= rect.top + rect.height &&
+                    rect.left <= event.clientX &&
+                    event.clientX <= rect.left + rect.width;
+
+                if (!isInDialog) {
+                    closeModal();
+                }
+            });
+        }
+
+        // Prevenir propagación de clicks dentro del contenido
+        const modalContent = dialog.querySelector(':scope > div');
+        if (modalContent) {
+            modalContent.addEventListener('click', function (event) {
+                event.stopPropagation();
+            });
+        }
+
+        // Prevenir que el evento touchmove propague fuera del dialog en móviles
+        dialog.addEventListener(
+            'touchmove',
+            function (event) {
+                // Permitir scroll solo dentro del contenido del modal
+                const content = dialog.querySelector('.px-4.py-5');
+                if (content && !content.contains(event.target)) {
+                    event.preventDefault();
+                }
+            },
+            { passive: false }
+        );
+    });
+</script>
+
+<style>
+    /* Estilos para el elemento dialog */
+    dialog {
+        margin: auto;
+        border: none;
+        padding: 0;
+        max-height: 90vh;
+        overscroll-behavior: contain;
+        -webkit-overflow-scrolling: touch;
+        z-index: 100; /* Asegurar que esté por encima de otros elementos */
+    }
+
+    dialog::backdrop {
+        background-color: rgba(0, 0, 0, 0.6);
+        z-index: 99;
+    }
+
+    /* Evitar scroll en el body cuando el modal está abierto */
+    :global(body.modal-open) {
+        overflow: hidden;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        touch-action: none;
+    }
+
+    /* Mejorar interactividad en dispositivos móviles */
+    dialog .px-4.py-5 {
+        -webkit-overflow-scrolling: touch;
+        touch-action: pan-y;
+        user-select: auto;
+        pointer-events: auto;
+    }
+
+    /* Asegurar que todos los elementos interactivos tengan pointer-events */
+    dialog button,
+    dialog a,
+    dialog input,
+    dialog select,
+    dialog [role='button'] {
+        pointer-events: auto !important;
+        touch-action: manipulation;
+    }
+
+    /* Transiciones suaves */
+    dialog[open] {
+        animation: fade-in 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    dialog.closing {
+        animation: fade-out 0.25s ease-out forwards;
+    }
+
+    dialog.sheet-open {
+        animation: slide-up 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    dialog.sheet-open.closing {
+        animation: slide-down 0.25s ease-out forwards;
+    }
+
+    @keyframes fade-in {
+        from {
+            opacity: 0;
+            transform: scale(0.95);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    @keyframes fade-out {
+        from {
+            opacity: 1;
+            transform: scale(1);
+        }
+        to {
+            opacity: 0;
+            transform: scale(0.95);
+        }
+    }
+
+    @keyframes slide-up {
+        from {
+            opacity: 0;
+            transform: translateY(100%);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes slide-down {
+        from {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        to {
+            opacity: 0;
+            transform: translateY(100%);
+        }
+    }
+
+    @media (max-width: 767px) {
+        dialog[open].sheet-open {
+            margin-top: auto;
+            margin-bottom: 0;
+        }
+    }
+</style>

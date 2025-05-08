@@ -8,6 +8,9 @@ import Portfolio from './Portfolio.astro';
 import CTA from './CTA.astro';
 import Contact from './Contact.astro';
 import Quotation from './Quotation.astro';
+import Metodology from './Metodology.astro';
+import Button from './Button.astro';
+import ModalWrapper from './ModalWrapper.astro';
 
 export {
     Container,
@@ -19,5 +22,8 @@ export {
     Portfolio,
     CTA,
     Contact,
-    Quotation
+    Quotation,
+    Metodology,
+    Button,
+    ModalWrapper
 };

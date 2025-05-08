@@ -1,0 +1,356 @@
+---
+import { Button, Container } from '../components';
+
+const projects = [
+    {
+        title: 'E-commerce Boutique',
+        description:
+            'Tienda online con catálogo personalizado y pasarela de pagos integrada.',
+        image: '/images/portfolio/ecommerce.jpg',
+        tags: ['E-commerce', 'Diseño UX', 'Desarrollo Web'],
+        url: '#'
+    },
+    {
+        title: 'App de Gestión Empresarial',
+        description:
+            'Aplicación web para gestión de recursos y seguimiento de proyectos.',
+        image: '/images/portfolio/business-app.jpg',
+        tags: ['Aplicación Web', 'Dashboard', 'SaaS'],
+        url: '#'
+    },
+    {
+        title: 'Sitio Corporativo',
+        description:
+            'Página web corporativa con diseño a medida y optimización SEO.',
+        image: '/images/portfolio/corporate.jpg',
+        tags: ['Corporativo', 'SEO', 'Responsive'],
+        url: '#'
+    },
+    {
+        title: 'Plataforma Educativa',
+        description:
+            'Sistema de gestión de cursos online con área de miembros.',
+        image: '/images/portfolio/education.jpg',
+        tags: ['E-learning', 'Membresías', 'Contenido Digital'],
+        url: '#'
+    },
+    {
+        title: 'Blog Profesional',
+        description:
+            'Blog optimizado para SEO con sistema de gestión de contenidos.',
+        image: '/images/portfolio/blog.jpg',
+        tags: ['Blog', 'CMS', 'Marketing de Contenidos'],
+        url: '#'
+    }
+];
+---
+
+<style>
+    /* Estilos específicos para el carrusel */
+    .portfolio-carousel {
+        position: relative;
+        height: 450px;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .portfolio-item {
+        position: absolute;
+        top: 0;
+        transition: all 0.5s ease;
+        transform-origin: center;
+    }
+
+    /* Gradientes laterales para suavizar bordes */
+    .carousel-container::before,
+    .carousel-container::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 15%;
+        z-index: 40;
+        pointer-events: none;
+    }
+
+    .carousel-container::before {
+        left: 0;
+        background: linear-gradient(
+            to right,
+            rgba(255, 255, 255, 1),
+            rgba(255, 255, 255, 0)
+        );
+    }
+
+    .carousel-container::after {
+        right: 0;
+        background: linear-gradient(
+            to left,
+            rgba(255, 255, 255, 1),
+            rgba(255, 255, 255, 0)
+        );
+    }
+
+    /* Ajuste responsivo */
+    @media (max-width: 768px) {
+        .portfolio-carousel {
+            height: 400px;
+        }
+
+        .carousel-container::before,
+        .carousel-container::after {
+            width: 10%;
+        }
+    }
+</style>
+
+<Container element="section" containerClass="py-32">
+    <h2 class="text-4xl font-bold text-center text-gray-900 text-balance mb-1">
+        Nuestro portafolio de proyectos
+    </h2>
+    <p class="text-center text-gray-500">
+        Descubre cómo hemos transformado ideas en experiencias digitales
+        exitosas.
+    </p>
+
+    <div class="mt-12 relative overflow-hidden">
+        <div class="flex justify-center gap-4 mb-8">
+            <Button
+                class="carousel-control prev rounded-full aspect-square z-10 p-4 sm:p-3.5 bg-gray-800 hover:bg-gray-700"
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5 rotate-180"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                >
+                    <path
+                        fill-rule="evenodd"
+                        d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+                        clip-rule="evenodd"></path>
+                </svg>
+            </Button>
+
+            <Button
+                class="carousel-control next rounded-full aspect-square z-10 p-4 sm:p-3.5 bg-gray-800 hover:bg-gray-700"
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                >
+                    <path
+                        fill-rule="evenodd"
+                        d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+                        clip-rule="evenodd"></path>
+                </svg>
+            </Button>
+        </div>
+
+        <div class="carousel-container relative max-w-5xl mx-auto px-4">
+            <div
+                class="portfolio-carousel flex justify-center items-center py-8"
+            >
+                {
+                    projects.map((project, index) => (
+                        <div
+                            class="portfolio-item flex-shrink-0 w-90 overflow-hidden border border-neutral-200 transition-all duration-500 bg-white rounded-xl"
+                            data-index={index}
+                        >
+                            <div class="h-60 overflow-hidden">
+                                <img
+                                    src={project.image}
+                                    alt={project.title}
+                                    class="w-full h-full object-cover"
+                                    onerror="this.src='/images/placeholder.jpg'; this.onerror=null;"
+                                />
+                            </div>
+                            <div class="p-5">
+                                <a
+                                    href={project.url}
+                                    target="_blank"
+                                    class="block transition-colors hover:underline"
+                                >
+                                    <h3 class="text-xl font-medium text-gray-800 mb-2">
+                                        {project.title}
+                                    </h3>
+                                </a>
+                                <p class="text-gray-500 text-sm mb-3 line-clamp-2">
+                                    {project.description}
+                                </p>
+                                <div class="flex flex-wrap gap-1 mt-12">
+                                    {project.tags.map((tag) => (
+                                        <span class="text-xs px-2 py-0.5 bg-gray-100 text-gray-600 rounded-full">
+                                            {tag}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </div>
+</Container>
+
+<script>
+    // Ejecutar cuando el DOM esté listo
+    const initCarousel = () => {
+        const carouselContainer = document.querySelector(
+            '.carousel-container'
+        ) as HTMLElement;
+        const carouselTrack = document.querySelector(
+            '.portfolio-carousel'
+        ) as HTMLElement;
+        const items = document.querySelectorAll('.portfolio-item');
+        const prevBtn = document.querySelector(
+            '.carousel-control.prev'
+        ) as HTMLButtonElement;
+        const nextBtn = document.querySelector(
+            '.carousel-control.next'
+        ) as HTMLButtonElement;
+
+        if (
+            !carouselContainer ||
+            !carouselTrack ||
+            !items.length ||
+            !prevBtn ||
+            !nextBtn
+        ) {
+            console.error('Some carousel elements not found');
+            return;
+        }
+
+        // Obtener dimensiones iniciales
+        const containerWidth = carouselTrack.offsetWidth;
+        const itemWidth = (items[0] as HTMLElement).offsetWidth;
+
+        let currentIndex = 0;
+        const totalItems = items.length;
+
+        // Función para actualizar la posición de los elementos
+        const updateCarousel = () => {
+            // Actualizar el ancho del contenedor al recalcular
+            const containerWidth = carouselTrack.offsetWidth;
+            const centerX = containerWidth / 2;
+
+            items.forEach((item, index) => {
+                const element = item as HTMLElement;
+                // Calcular la posición relativa al elemento central
+                let position = index - currentIndex;
+
+                // Para efecto de loop continuo
+                if (position < -Math.floor(totalItems / 2))
+                    position += totalItems;
+                if (position > Math.floor(totalItems / 2))
+                    position -= totalItems;
+
+                // Espaciado adaptativo según el ancho de pantalla
+                const spacing = containerWidth < 768 ? 0.65 : 0.8;
+                const offset = position * itemWidth * spacing;
+
+                // Posicionar cada elemento
+                if (position === 0) {
+                    // Elemento central (en foco)
+                    element.style.left = `${centerX}px`;
+                    element.style.transform = `translateX(-50%) scale(1)`;
+                    element.style.zIndex = '30';
+                    element.style.opacity = '1';
+                    element.style.filter = 'blur(0)';
+                    element.style.pointerEvents = 'auto';
+                } else if (position === -1 || position === 1) {
+                    // Elementos laterales (desenfocados)
+                    element.style.left = `${centerX + offset}px`;
+                    element.style.transform = `translateX(-50%) scale(0.9)`;
+                    element.style.zIndex = '20';
+                    element.style.opacity = '0.6';
+                    element.style.filter = 'blur(1px)';
+                    element.style.pointerEvents = 'none';
+                } else {
+                    // Elementos fuera de vista
+                    element.style.left = `${centerX + offset}px`;
+                    element.style.transform = `translateX(-50%) scale(0.8)`;
+                    element.style.zIndex = '10';
+                    element.style.opacity = '0';
+                    element.style.pointerEvents = 'none';
+                }
+            });
+        };
+
+        // Función para navegar al siguiente elemento
+        const goToIndex = (index: number) => {
+            currentIndex = index;
+
+            // Ajustar para loop circular
+            if (currentIndex < 0) currentIndex = totalItems - 1;
+            if (currentIndex >= totalItems) currentIndex = 0;
+
+            updateCarousel();
+        };
+
+        // Eventos de los botones
+        prevBtn.addEventListener('click', () => {
+            goToIndex(currentIndex - 1);
+        });
+
+        nextBtn.addEventListener('click', () => {
+            goToIndex(currentIndex + 1);
+        });
+
+        // Soporte para deslizamiento táctil
+        let startX: number;
+        carouselContainer.addEventListener(
+            'touchstart',
+            (e: TouchEvent) => {
+                startX = e.touches[0].clientX;
+            },
+            { passive: true }
+        );
+
+        carouselContainer.addEventListener(
+            'touchend',
+            (e: TouchEvent) => {
+                const endX = e.changedTouches[0].clientX;
+                const diff = startX - endX;
+
+                // Umbral para detectar deslizamiento
+                if (Math.abs(diff) > 50) {
+                    if (diff > 0) {
+                        goToIndex(currentIndex + 1);
+                    } else {
+                        goToIndex(currentIndex - 1);
+                    }
+                }
+            },
+            { passive: true }
+        );
+
+        // Inicializar el carousel
+        updateCarousel();
+
+        // Asegurar que se ajuste correctamente cuando cambia el tamaño de la ventana
+        window.addEventListener('resize', () => {
+            // Pequeño retraso para asegurar que se tienen las dimensiones correctas
+            setTimeout(updateCarousel, 100);
+        });
+
+        // Autoreproducción opcional (descomenta para activar)
+        /*
+        const autoplayInterval = setInterval(() => {
+            goToIndex(currentIndex + 1);
+        }, 5000);
+        
+        // Detener autoreproducción al interactuar
+        carouselContainer.addEventListener('mouseenter', () => clearInterval(autoplayInterval));
+        */
+    };
+
+    // Asegurar que el script se ejecute después de que el DOM esté completamente cargado
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initCarousel);
+    } else {
+        initCarousel();
+    }
+</script>

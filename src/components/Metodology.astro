@@ -1,0 +1,400 @@
+---
+import { Button, Container } from '../components';
+---
+
+<Container
+    element="section"
+    globalClass="bg-gray-800 rounded-[max(2.5vw,2rem)] scroll-mt-32 mb-8"
+    containerClass="flex flex-col items-center px-4 sm:px-8 lg:px-12 py-20"
+    id="metodologia"
+>
+    <h2
+        class="text-3xl sm:text-4xl font-bold text-center text-gray-100 text-balance mb-2"
+    >
+        De idea a realidad
+    </h2>
+
+    <p class="text-center text-gray-200 max-w-xl mb-12 md:mb-16 text-balance">
+        Transformamos tu visión en una presencia digital efectiva en cuatro
+        fases estratégicas, sin complicaciones.
+    </p>
+
+    <div class="w-full max-w-5xl mx-auto">
+        <!-- Desktop Timeline -->
+        <div class="hidden md:block relative mb-20">
+            <!-- Timeline Track with Animation -->
+            <div class="relative mb-20 h-6">
+                <div class="absolute w-full h-0.5 bg-gray-600 top-3 left-0">
+                </div>
+                <div class="absolute w-full h-0.5 top-3 left-0 overflow-hidden">
+                    <div
+                        id="progress-line"
+                        class="w-0 h-full bg-gradient-to-r from-blue-500 via-blue-400 to-blue-300 transition-all duration-1000 ease-out rounded-full"
+                    >
+                    </div>
+                </div>
+
+                <!-- Timeline Points with Pulse Effect -->
+                <div
+                    class="absolute top-0 left-[12.5%] flex flex-col items-center"
+                >
+                    <div
+                        class="w-6 h-6 rounded-full bg-blue-500 border-4 border-gray-800 z-10 relative timeline-point"
+                    >
+                        <span
+                            class="absolute inset-0 rounded-full bg-blue-400 animate-ping opacity-30"
+                        ></span>
+                    </div>
+                    <div class="h-10 w-0.5 bg-blue-500 mt-1 opacity-70"></div>
+                </div>
+
+                <div
+                    class="absolute top-0 left-[37.5%] flex flex-col items-center"
+                >
+                    <div
+                        class="w-6 h-6 rounded-full bg-blue-400 border-4 border-gray-800 z-10 relative timeline-point"
+                    >
+                        <span
+                            class="absolute inset-0 rounded-full bg-blue-400 animate-ping opacity-20"
+                        ></span>
+                    </div>
+                    <div class="h-10 w-0.5 bg-blue-400 mt-1 opacity-70"></div>
+                </div>
+
+                <div
+                    class="absolute top-0 left-[62.5%] flex flex-col items-center"
+                >
+                    <div
+                        class="w-6 h-6 rounded-full bg-blue-300 border-4 border-gray-800 z-10 relative timeline-point"
+                    >
+                        <span
+                            class="absolute inset-0 rounded-full bg-blue-300 animate-ping opacity-10"
+                        ></span>
+                    </div>
+                    <div class="h-10 w-0.5 bg-blue-300 mt-1 opacity-70"></div>
+                </div>
+
+                <div
+                    class="absolute top-0 left-[87.5%] flex flex-col items-center"
+                >
+                    <div
+                        class="w-6 h-6 rounded-full bg-blue-200 border-4 border-gray-800 z-10 relative timeline-point"
+                    >
+                        <span
+                            class="absolute inset-0 rounded-full bg-blue-200 animate-ping opacity-10"
+                        ></span>
+                    </div>
+                    <div class="h-10 w-0.5 bg-blue-200 mt-1 opacity-70"></div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-4 gap-12">
+                <div
+                    class="flex flex-col items-center timeline-content opacity-0"
+                >
+                    <span
+                        class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-blue-900 text-blue-300 text-sm font-bold mb-3"
+                        >1</span
+                    >
+                    <h3 class="text-xl font-bold text-gray-100 mb-3">
+                        Descubrimiento
+                    </h3>
+                    <p class="text-gray-300 text-sm text-center">
+                        Exploramos tu proyecto para capturar tu visión,
+                        objetivos y requisitos específicos.
+                    </p>
+                </div>
+
+                <div
+                    class="flex flex-col items-center timeline-content opacity-0"
+                >
+                    <span
+                        class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-blue-900 text-blue-300 text-sm font-bold mb-3"
+                        >2</span
+                    >
+                    <h3 class="text-xl font-bold text-gray-100 mb-3">
+                        Arquitectura
+                    </h3>
+                    <p class="text-gray-300 text-sm text-center">
+                        Creamos un plan visual detallado con experiencias de
+                        usuario intuitivas y atractivas.
+                    </p>
+                </div>
+
+                <div
+                    class="flex flex-col items-center timeline-content opacity-0"
+                >
+                    <span
+                        class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-blue-900 text-blue-300 text-sm font-bold mb-3"
+                        >3</span
+                    >
+                    <h3 class="text-xl font-bold text-gray-100 mb-3">
+                        Construcción
+                    </h3>
+                    <p class="text-gray-300 text-sm text-center">
+                        Transformamos diseños en código funcional optimizado
+                        para rendimiento y experiencia.
+                    </p>
+                </div>
+
+                <div
+                    class="flex flex-col items-center timeline-content opacity-0"
+                >
+                    <span
+                        class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-blue-900 text-blue-300 text-sm font-bold mb-3"
+                        >4</span
+                    >
+                    <h3 class="text-xl font-bold text-gray-100 mb-3">
+                        Despliegue
+                    </h3>
+                    <p class="text-gray-300 text-sm text-center">
+                        Lanzamos tu proyecto con pruebas exhaustivas y
+                        entrenamiento para tu equipo.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Timeline - Vertical Style -->
+        <div class="md:hidden flex flex-col space-y-0 relative">
+            <div
+                class="absolute left-6 top-6 bottom-6 w-0.5 bg-gradient-to-b from-blue-400 via-blue-500 to-blue-600"
+            >
+            </div>
+
+            <div class="flex mb-12 relative timeline-item-mobile opacity-0">
+                <div class="flex-shrink-0 relative">
+                    <div
+                        class="flex justify-center items-center w-12 h-12 rounded-full bg-gray-900 border-2 border-blue-400 shadow-md z-10 relative"
+                    >
+                        <span class="text-blue-400 text-lg font-bold">1</span>
+                        <span
+                            class="absolute inset-0 rounded-full bg-blue-400 animate-ping opacity-10"
+                        ></span>
+                    </div>
+                </div>
+                <div class="ml-6 pt-1">
+                    <h3 class="text-xl font-bold text-gray-100 mb-2">
+                        Descubrimiento
+                    </h3>
+                    <p class="text-gray-300">
+                        Exploramos tu proyecto para capturar tu visión,
+                        objetivos y requisitos específicos.
+                    </p>
+                </div>
+            </div>
+
+            <div class="flex mb-12 relative timeline-item-mobile opacity-0">
+                <div class="flex-shrink-0">
+                    <div
+                        class="flex justify-center items-center w-12 h-12 rounded-full bg-gray-900 border-2 border-blue-500 shadow-md"
+                    >
+                        <span class="text-blue-500 text-lg font-bold">2</span>
+                    </div>
+                </div>
+                <div class="ml-6 pt-1">
+                    <h3 class="text-xl font-bold text-gray-100 mb-2">
+                        Arquitectura
+                    </h3>
+                    <p class="text-gray-300">
+                        Creamos un plan visual detallado con experiencias de
+                        usuario intuitivas y atractivas.
+                    </p>
+                </div>
+            </div>
+
+            <div class="flex mb-12 relative timeline-item-mobile opacity-0">
+                <div class="flex-shrink-0">
+                    <div
+                        class="flex justify-center items-center w-12 h-12 rounded-full bg-gray-900 border-2 border-blue-500 shadow-md"
+                    >
+                        <span class="text-blue-500 text-lg font-bold">3</span>
+                    </div>
+                </div>
+                <div class="ml-6 pt-1">
+                    <h3 class="text-xl font-bold text-gray-100 mb-2">
+                        Construcción
+                    </h3>
+                    <p class="text-gray-300">
+                        Transformamos diseños en código funcional optimizado
+                        para rendimiento y experiencia.
+                    </p>
+                </div>
+            </div>
+
+            <div class="flex relative timeline-item-mobile opacity-0">
+                <div class="flex-shrink-0">
+                    <div
+                        class="flex justify-center items-center w-12 h-12 rounded-full bg-gray-900 border-2 border-blue-600 shadow-md"
+                    >
+                        <span class="text-blue-600 text-lg font-bold">4</span>
+                    </div>
+                </div>
+                <div class="ml-6 pt-1">
+                    <h3 class="text-xl font-bold text-gray-100 mb-2">
+                        Despliegue
+                    </h3>
+                    <p class="text-gray-300">
+                        Lanzamos tu proyecto con pruebas exhaustivas y
+                        entrenamiento para tu equipo.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-16 text-center">
+            <Button>
+                Inicia tu proyecto ahora
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5 ml-2"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                >
+                    <path
+                        fill-rule="evenodd"
+                        d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+                        clip-rule="evenodd"></path>
+                </svg>
+            </Button>
+        </div>
+    </div>
+</Container>
+
+<script>
+    // Animaciones avanzadas con GSAP
+    document.addEventListener('DOMContentLoaded', () => {
+        // Importar GSAP de manera asíncrona para no bloquear la carga
+        import('gsap')
+            .then((gsap) => {
+                const { gsap: g } = gsap;
+
+                // Animación de la línea de progreso
+                const progressLine = document.getElementById('progress-line');
+                if (progressLine) {
+                    const parent = progressLine.parentElement;
+                    const grandparent = parent ? parent.parentElement : null;
+
+                    // Configurar animación con GSAP
+                    g.to(progressLine, {
+                        width: '100%',
+                        duration: 1.5,
+                        ease: 'power2.out',
+                        scrollTrigger: {
+                            trigger: grandparent || progressLine,
+                            start: 'top 80%',
+                            toggleActions: 'play none none none'
+                        }
+                    });
+                }
+
+                // Animación de las tarjetas de contenido en desktop
+                const timelineContentItems =
+                    document.querySelectorAll('.timeline-content');
+                g.fromTo(
+                    timelineContentItems,
+                    { y: 30, opacity: 0 },
+                    {
+                        y: 0,
+                        opacity: 1,
+                        duration: 0.8,
+                        stagger: 0.2,
+                        ease: 'back.out(1.7)',
+                        scrollTrigger: {
+                            trigger:
+                                timelineContentItems.length > 0
+                                    ? timelineContentItems[0]
+                                    : document.body,
+                            start: 'top 80%'
+                        }
+                    }
+                );
+
+                // Animación de los puntos de la línea del tiempo
+                const timelinePoints =
+                    document.querySelectorAll('.timeline-point');
+                g.fromTo(
+                    timelinePoints,
+                    { scale: 0, opacity: 0 },
+                    {
+                        scale: 1,
+                        opacity: 1,
+                        duration: 0.5,
+                        stagger: 0.15,
+                        ease: 'back.out(2)',
+                        scrollTrigger: {
+                            trigger:
+                                timelinePoints.length > 0
+                                    ? timelinePoints[0]
+                                    : document.body,
+                            start: 'top 80%'
+                        }
+                    }
+                );
+
+                // Animación para timeline mobile
+                const timelineMobileItems = document.querySelectorAll(
+                    '.timeline-item-mobile'
+                );
+                g.fromTo(
+                    timelineMobileItems,
+                    { x: -20, opacity: 0 },
+                    {
+                        x: 0,
+                        opacity: 1,
+                        duration: 0.7,
+                        stagger: 0.25,
+                        ease: 'power2.out',
+                        scrollTrigger: {
+                            trigger:
+                                timelineMobileItems.length > 0
+                                    ? timelineMobileItems[0]
+                                    : document.body,
+                            start: 'top 80%'
+                        }
+                    }
+                );
+            })
+            .catch((error) => {
+                console.warn(
+                    'GSAP no pudo cargarse, usando animaciones simples de fallback',
+                    error
+                );
+
+                // Fallback simple para la línea de progreso si GSAP falla
+                const progressLine = document.getElementById('progress-line');
+                if (progressLine) {
+                    const observer = new IntersectionObserver(
+                        (entries) => {
+                            entries.forEach((entry) => {
+                                if (entry.isIntersecting) {
+                                    setTimeout(() => {
+                                        progressLine.style.width = '100%';
+                                    }, 300);
+                                    observer.unobserve(entry.target);
+                                }
+                            });
+                        },
+                        { threshold: 0.5 }
+                    );
+
+                    const parent = progressLine.parentElement;
+                    if (parent && parent.parentElement) {
+                        observer.observe(parent.parentElement);
+                    }
+                }
+
+                // Mostrar los elementos con opacidad 0
+                document
+                    .querySelectorAll(
+                        '.timeline-content, .timeline-item-mobile'
+                    )
+                    .forEach((el) => {
+                        if (el instanceof HTMLElement) {
+                            el.style.opacity = '1';
+                            el.style.transform = 'none';
+                        }
+                    });
+            });
+    });
+</script>
